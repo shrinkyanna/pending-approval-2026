@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex, follow">
+  <meta name="theme-color" content="#f5ecdf">
+  <title>Request Received — The Unauthorized Collection</title>
+  <style>
+    * { box-sizing: border-box; }
+    html, body { margin: 0; min-height: 100%; }
+    body {
+      background: #f5ecdf;
+      color: #38261b;
+      font-family: Georgia, 'Times New Roman', serif;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 100svh;
+      padding: clamp(12px, 3vw, 32px);
+    }
+    main { width: min(100%, 1040px); text-align: center; }
+    .certificate { display: block; width: 100%; height: auto; margin: 0 auto; }
+    .return-link {
+      display: inline-block;
+      margin: 22px auto 10px;
+      color: #725536;
+      text-decoration: none;
+      font: 600 11px/1.5 Arial, Helvetica, sans-serif;
+      letter-spacing: .17em;
+      text-transform: uppercase;
+      border-bottom: 1px solid #b99c67;
+      padding-bottom: 7px;
+    }
+    .return-link:hover, .return-link:focus-visible { color: #2b1d13; }
+    @media (max-width: 600px) {
+      body { padding: 10px; }
+      .return-link { margin-top: 18px; font-size: 10px; }
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <img class="certificate" src="confirmation-art.png" alt="The Unauthorized Collection. Request Received. Your request to access Pending Approval (2026) has been recorded. Authorization remains pending. Further instructions may follow." width="1536" height="1024">
+    <a class="return-link" href="/">Return to the exhibition &rarr;</a>
+  </main>
+</body>
+</html>
