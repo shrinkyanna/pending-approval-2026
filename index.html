@@ -1,16 +1,321 @@
-<!doctype html>
+
+<!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Pending Approval (2026) — The Unauthorized Collection</title>
-<meta name="description" content="A conceptual exhibition on hesitation, timing, and the spaces between intention and action.">
-<style>
-:root{--ink:#25211e;--paper:#f2e9de;--gold:#b99c67}*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:#211e1b;color:var(--ink);font-family:Georgia,'Times New Roman',serif}.hero{position:relative;background:#2a241f}.hero img{display:block;width:100%;height:auto}.hero a{position:absolute;top:0;height:7%;z-index:2}.hero .exhibition{right:21%;width:10%}.hero .story{right:10%;width:10%}.hero .register{right:0;width:10%}.hero a:focus-visible{outline:3px solid white;outline-offset:-3px}.content{background:linear-gradient(120deg,#f7efe4,#eee2d4);display:grid;grid-template-columns:1fr 1fr;gap:7%;padding:52px max(6.5%,calc((100vw - 1350px)/2));min-height:240px}.content section+section{border-left:1px solid #a79c90;padding-left:11%}h2{font-size:clamp(24px,2.7vw,38px);font-weight:400;line-height:1.12;margin:0 0 16px}p{font-size:clamp(16px,1.55vw,22px);line-height:1.5;margin:0 0 22px}.note{font:600 12px Arial,sans-serif;letter-spacing:.18em;color:#4e4035;text-transform:uppercase;text-decoration:none;border-bottom:1px solid #857765;padding-bottom:8px}.signup{display:flex;gap:4px;margin-top:22px}.signup input{min-width:0;flex:1;border:1px solid #b8aea4;border-radius:3px;padding:16px;background:#faf4eb;font:16px Georgia,serif}.signup button{border:0;background:#292522;color:#fff;padding:15px 24px;font:600 12px Arial,sans-serif;letter-spacing:.09em;white-space:nowrap;cursor:not-allowed}.small{font:12px Arial,sans-serif;color:#6c6158;margin-top:11px}.curator{background:#e9ded0;padding:44px 7%;display:none}.curator:target{display:block}.curator p{max-width:780px}footer{display:flex;justify-content:space-between;gap:24px;flex-wrap:wrap;padding:30px 4%;background:#211e1b;color:#e6d9c7;font:11px Arial,sans-serif;letter-spacing:.13em;text-transform:uppercase}@media(max-width:720px){.content{grid-template-columns:1fr;gap:32px;padding:36px 7%}.content section+section{border-left:0;border-top:1px solid #b7a99b;padding:28px 0 0}.signup{flex-wrap:wrap}.signup input{flex-basis:100%}.signup button{width:100%}footer{flex-direction:column;gap:13px}.hero .exhibition{right:21%}}
-</style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Pending Approval (2026). A conceptual exhibition exploring hesitation, timing, and the spaces between intention and action.">
+  <title>Pending Approval (2026) — The Unauthorized Collection</title>
+
+  <style>
+    :root {
+      --ink: #25211e;
+      --paper: #f2e9de;
+      --gold: #b99c67;
+    }
+
+    * { box-sizing: border-box; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      margin: 0;
+      background: var(--ink);
+      color: var(--ink);
+      font-family: Georgia, "Times New Roman", serif;
+    }
+
+    a { color: inherit; }
+
+    .hero {
+      position: relative;
+      min-height: 760px;
+      height: 100vh;
+      max-height: 1100px;
+      overflow: hidden;
+      background: #34271f;
+    }
+
+    .hero-image {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center top;
+    }
+
+    .hero::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+        to bottom,
+        rgba(20, 15, 12, .52),
+        transparent 28%,
+        transparent 75%,
+        rgba(20, 15, 12, .08)
+      );
+      pointer-events: none;
+    }
+
+    .navigation {
+      position: relative;
+      z-index: 2;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 20px;
+      margin: 0 4%;
+      padding: 42px 0 30px;
+      border-bottom: 1px solid rgba(230, 209, 169, .5);
+      color: #e3cfaa;
+      font-family: Arial, sans-serif;
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: .16em;
+      text-transform: uppercase;
+    }
+
+    .navigation a {
+      text-decoration: none;
+    }
+
+    .navigation a:hover {
+      color: #fff;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 25px;
+      align-items: center;
+    }
+
+    .exhibition-info {
+      background: linear-gradient(#f2e9de, #f7f0e6);
+      padding: 65px 8% 75px;
+    }
+
+    .info-grid {
+      max-width: 1250px;
+      margin: auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 60px;
+    }
+
+    .story {
+      padding-right: 35px;
+    }
+
+    .registration {
+      border-left: 1px solid #c9bcb0;
+      padding-left: 60px;
+    }
+
+    h2 {
+      margin: 0 0 16px;
+      font-size: clamp(28px, 3vw, 38px);
+      font-weight: normal;
+    }
+
+    .story p {
+      font-size: 20px;
+      line-height: 1.55;
+      margin: 0 0 20px;
+    }
+
+    .curator-link {
+      display: inline-block;
+      padding-bottom: 7px;
+      border-bottom: 1px solid #a18d77;
+      font-family: Arial, sans-serif;
+      font-size: 11px;
+      font-weight: bold;
+      letter-spacing: .17em;
+      text-decoration: none;
+      text-transform: uppercase;
+    }
+
+    .registration-intro {
+      margin: 0 0 15px;
+      font-size: 15px;
+      line-height: 1.6;
+      color: #655b52;
+    }
+
+    .form-frame {
+      display: block;
+      width: 100%;
+      height: 620px;
+      border: 0;
+      background: transparent;
+    }
+
+    .curator {
+      background: #e9dfd1;
+      padding: 70px 8%;
+    }
+
+    .curator-inner {
+      max-width: 850px;
+      margin: auto;
+    }
+
+    .curator p {
+      font-size: 20px;
+      line-height: 1.8;
+    }
+
+    .curator-note {
+      font-size: 13px !important;
+      font-style: italic;
+      color: #6f6255;
+    }
+
+    footer {
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 20px;
+      padding: 30px 4%;
+      background: #211e1b;
+      color: #eee1cd;
+      font-family: Arial, sans-serif;
+      font-size: 10px;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+    }
+
+    @media (max-width: 760px) {
+      .hero {
+        height: 78vh;
+        min-height: 480px;
+      }
+
+      .navigation {
+        padding: 22px 0;
+        font-size: 10px;
+        letter-spacing: .08em;
+      }
+
+      .nav-links { gap: 12px; }
+
+      .exhibition-info { padding: 45px 6%; }
+
+      .info-grid {
+        grid-template-columns: 1fr;
+        gap: 35px;
+      }
+
+      .story { padding-right: 0; }
+
+      .registration {
+        border-left: 0;
+        border-top: 1px solid #c9bcb0;
+        padding: 35px 0 0;
+      }
+
+      .form-frame { height: 650px; }
+
+      .curator { padding: 45px 6%; }
+
+      footer { padding: 25px 6%; }
+    }
+  </style>
 </head>
+
 <body>
-<header class="hero" id="exhibition"><img src="museum-hero.jpg" alt="Grand classical art museum with arches, sculptures, marble floor and a gilded frame displaying the artwork Pending Approval (2026)."><a class="exhibition" href="#exhibition" aria-label="Exhibition"></a><a class="story" href="#story" aria-label="The story"></a><a class="register" href="#register" aria-label="Register"></a></header>
-<main class="content"><section id="story"><h2>About the Exhibition</h2><p>A contemporary study on hesitation, timing, and the spaces between intention and action.</p><a class="note" href="#curator">View curator’s note →</a></section><section id="register"><h2>Request Exhibition Access</h2><div class="signup"><input type="email" placeholder="Enter your email" aria-label="Email address" disabled><button disabled>JOIN THE LIST</button></div><div class="small">Registration opens soon. No information is being collected yet.</div></section></main>
-<section class="curator" id="curator"><h2>Curator’s Note</h2><p>What becomes of an idea that is never permitted to begin? An artwork that cannot begin. A decision that cannot be made. An intention suspended between possibility and permission.</p><p>The absence is not accidental. It is the exhibition.</p><a class="note" href="#story">Return to exhibition ↑</a></section>
-<footer><span>Pending Approval (2026)</span><span>A Conceptual Exhibition</span><span>© 2026 The Unauthorized Collection</span></footer>
-</body></html>
+
+  <header class="hero" id="exhibition">
+    <img
+      class="hero-image"
+      src="museum-hero.jpg"
+      alt="Grand classical art museum featuring a gilded frame displaying Pending Approval"
+    >
+
+    <nav class="navigation" aria-label="Main navigation">
+      <a href="#exhibition">The Unauthorized Collection</a>
+
+      <div class="nav-links">
+        <a href="#exhibition">Exhibition</a>
+        <span>/</span>
+        <a href="#story">The Story</a>
+        <span>/</span>
+        <a href="#register">Register</a>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+    <section class="exhibition-info" id="story">
+      <div class="info-grid">
+
+        <div class="story">
+          <h2>About the Exhibition</h2>
+
+          <p>
+            A contemporary study on hesitation, timing,
+            and the spaces between intention and action.
+          </p>
+
+          <a class="curator-link" href="#curator">
+            View Curator's Note &rarr;
+          </a>
+        </div>
+
+        <div class="registration" id="register">
+          <h2>Request Exhibition Access</h2>
+
+          <p class="registration-intro">
+            Access is subject to human authorization.
+          </p>
+
+          <iframe
+            class="form-frame"
+            src="https://api.leadconnectorhq.com/widget/form/nPuehfRN9pcpJHuJhCM1"
+            title="Pending Approval (2026) Exhibition Access Form"
+            loading="lazy"
+          ></iframe>
+        </div>
+
+      </div>
+    </section>
+
+    <section class="curator" id="curator">
+      <div class="curator-inner">
+        <h2>Curator's Note</h2>
+
+        <p>
+          What becomes of an idea that is never permitted
+          to begin?
+        </p>
+
+        <p>
+          An artwork that cannot begin. A decision that
+          cannot be made. An approval that remains
+          permanently pending.
+        </p>
+
+        <p>
+          Pending Approval (2026) is a conceptual
+          exhibition about the strange beauty of waiting
+          for permission.
+        </p>
+
+        <p class="curator-note">
+          This exhibition is conceptual. No actual
+          authorization committee has been established.
+        </p>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <span>Pending Approval (2026)</span>
+    <span>A Conceptual Exhibition</span>
+    <span>&copy; 2026 The Unauthorized Collection</span>
+  </footer>
+
+</body>
+</html>
