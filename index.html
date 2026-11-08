@@ -14,9 +14,13 @@
       --gold: #b99c67;
     }
 
-    * { box-sizing: border-box; }
+    * {
+      box-sizing: border-box;
+    }
 
-    html { scroll-behavior: smooth; }
+    html {
+      scroll-behavior: smooth;
+    }
 
     body {
       margin: 0;
@@ -25,7 +29,11 @@
       font-family: Georgia, "Times New Roman", serif;
     }
 
-    a { color: inherit; }
+    a {
+      color: inherit;
+    }
+
+    /* MUSEUM HERO */
 
     .hero {
       position: relative;
@@ -59,6 +67,8 @@
       pointer-events: none;
     }
 
+    /* NAVIGATION */
+
     .navigation {
       position: relative;
       z-index: 2;
@@ -91,6 +101,8 @@
       align-items: center;
     }
 
+    /* EXHIBITION INFORMATION */
+
     .exhibition-info {
       background: linear-gradient(#f2e9de, #f7f0e6);
       padding: 65px 8% 75px;
@@ -102,6 +114,7 @@
       display: grid;
       grid-template-columns: 1fr 1fr;
       gap: 60px;
+      align-items: start;
     }
 
     .story {
@@ -111,6 +124,7 @@
     .registration {
       border-left: 1px solid #c9bcb0;
       padding-left: 60px;
+      min-width: 0;
     }
 
     h2 {
@@ -144,13 +158,29 @@
       color: #655b52;
     }
 
+    /* GHL FORM */
+
+    .form-container {
+      width: 100%;
+      overflow: hidden;
+    }
+
     .form-frame {
       display: block;
       width: 100%;
-      height: 620px;
+      height: 540px;
       border: 0;
       background: transparent;
+      transition: height .3s ease;
     }
+
+    /* AFTER SUCCESSFUL SUBMISSION */
+
+    .form-container.is-submitted .form-frame {
+      height: 330px;
+    }
+
+    /* CURATOR NOTE */
 
     .curator {
       background: #e9dfd1;
@@ -173,6 +203,8 @@
       color: #6f6255;
     }
 
+    /* FOOTER */
+
     footer {
       display: flex;
       justify-content: space-between;
@@ -187,6 +219,8 @@
       text-transform: uppercase;
     }
 
+    /* MOBILE */
+
     @media (max-width: 760px) {
       .hero {
         height: 78vh;
@@ -199,16 +233,22 @@
         letter-spacing: .08em;
       }
 
-      .nav-links { gap: 12px; }
+      .nav-links {
+        gap: 12px;
+      }
 
-      .exhibition-info { padding: 45px 6%; }
+      .exhibition-info {
+        padding: 45px 6%;
+      }
 
       .info-grid {
         grid-template-columns: 1fr;
         gap: 35px;
       }
 
-      .story { padding-right: 0; }
+      .story {
+        padding-right: 0;
+      }
 
       .registration {
         border-left: 0;
@@ -216,18 +256,31 @@
         padding: 35px 0 0;
       }
 
-      .form-frame { height: 650px; }
+      .form-frame {
+        height: 580px;
+      }
 
-      .curator { padding: 45px 6%; }
+      .form-container.is-submitted .form-frame {
+        height: 330px;
+      }
 
-      footer { padding: 25px 6%; }
+      .curator {
+        padding: 45px 6%;
+      }
+
+      footer {
+        padding: 25px 6%;
+      }
     }
   </style>
 </head>
 
 <body>
 
+  <!-- HERO -->
+
   <header class="hero" id="exhibition">
+
     <img
       class="hero-image"
       src="museum-hero.jpg"
@@ -235,7 +288,10 @@
     >
 
     <nav class="navigation" aria-label="Main navigation">
-      <a href="#exhibition">The Unauthorized Collection</a>
+
+      <a href="#exhibition">
+        The Unauthorized Collection
+      </a>
 
       <div class="nav-links">
         <a href="#exhibition">Exhibition</a>
@@ -244,14 +300,21 @@
         <span>/</span>
         <a href="#register">Register</a>
       </div>
+
     </nav>
+
   </header>
 
   <main>
+
+    <!-- EXHIBITION AND REGISTRATION -->
+
     <section class="exhibition-info" id="story">
+
       <div class="info-grid">
 
         <div class="story">
+
           <h2>About the Exhibition</h2>
 
           <p>
@@ -262,28 +325,41 @@
           <a class="curator-link" href="#curator">
             View Curator's Note &rarr;
           </a>
+
         </div>
 
         <div class="registration" id="register">
+
           <h2>Request Exhibition Access</h2>
 
           <p class="registration-intro">
             Access is subject to human authorization.
           </p>
 
-          <iframe
-            class="form-frame"
-            src="https://api.leadconnectorhq.com/widget/form/nPuehfRN9pcpJHuJhCM1"
-            title="Pending Approval (2026) Exhibition Access Form"
-            loading="lazy"
-          ></iframe>
+          <div class="form-container" id="formContainer">
+
+            <iframe
+              id="exhibitionForm"
+              class="form-frame"
+              src="https://api.leadconnectorhq.com/widget/form/nPuehfRN9pcpJHuJhCM1"
+              title="Pending Approval (2026) Exhibition Access Form"
+              loading="lazy"
+            ></iframe>
+
+          </div>
+
         </div>
 
       </div>
+
     </section>
 
+    <!-- CURATOR NOTE -->
+
     <section class="curator" id="curator">
+
       <div class="curator-inner">
+
         <h2>Curator's Note</h2>
 
         <p>
@@ -307,15 +383,92 @@
           This exhibition is conceptual. No actual
           authorization committee has been established.
         </p>
+
       </div>
+
     </section>
+
   </main>
+
+  <!-- FOOTER -->
 
   <footer>
     <span>Pending Approval (2026)</span>
     <span>A Conceptual Exhibition</span>
     <span>&copy; 2026 The Unauthorized Collection</span>
   </footer>
+
+  <!-- FORM HEIGHT MANAGEMENT -->
+
+  <script>
+    const formContainer = document.getElementById("formContainer");
+    const exhibitionForm = document.getElementById("exhibitionForm");
+
+    /*
+      The GHL form is hosted on another domain.
+
+      Its internal contents cannot be inspected directly
+      because of browser cross-origin restrictions.
+
+      We only accept height and submission messages
+      from the trusted LeadConnector origin.
+    */
+
+    const trustedOrigins = [
+      "https://api.leadconnectorhq.com",
+      "https://link.msgsndr.com"
+    ];
+
+    window.addEventListener("message", function(event) {
+
+      if (!trustedOrigins.includes(event.origin)) {
+        return;
+      }
+
+      if (event.source !== exhibitionForm.contentWindow) {
+        return;
+      }
+
+      let data = event.data;
+
+      if (typeof data === "string") {
+        try {
+          data = JSON.parse(data);
+        } catch (error) {
+          return;
+        }
+      }
+
+      if (!data || typeof data !== "object") {
+        return;
+      }
+
+      /*
+        Only act on an explicit submission-success event.
+        We do not assume that loading the iframe means
+        the form has been submitted.
+      */
+
+      const eventType = String(
+        data.type || data.event || ""
+      ).toLowerCase();
+
+      if (
+        eventType === "formsubmitted" ||
+        eventType === "form_submitted" ||
+        eventType === "form-submitted" ||
+        eventType === "submission_success"
+      ) {
+        formContainer.classList.add("is-submitted");
+
+        exhibitionForm.setAttribute(
+          "title",
+          "Exhibition Access Request Received"
+        );
+      }
+
+    });
+  </script>
 
 </body>
 </html>
